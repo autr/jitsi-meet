@@ -167,6 +167,20 @@ class Video extends Component<Props> {
         }
 
         videoTrack.jitsiTrack.attach(this._videoElement);
+
+        // [hydritsi] attach new participant video...
+
+        console.log('[Hydritsi 🎺] attaching video track...');
+
+        try {
+            window.limpit.attach({
+                ele: this._videoElement,
+                videoTrack: videoTrack,
+                id: videoTrack.participantId
+            });
+        } catch( err ) {
+            console.log('[Hydritsi 🎺] ❌ error attaching video track...', err.message);
+        }
     }
 
     /**
@@ -181,6 +195,21 @@ class Video extends Component<Props> {
      */
     _detachTrack(videoTrack) {
         if (this._videoElement && videoTrack && videoTrack.jitsiTrack) {
+
+            // [hydritsi] detach new participant video...
+
+            console.log('[Hydritsi 🎺] detaching video track...');
+
+            try {
+                window.limpit.detach({
+                    ele: this._videoElement,
+                    videoTrack: videoTrack,
+                    id: videoTrack.participantId
+                });
+            } catch( err ) {
+                console.log('[Hydritsi 🎺] ❌ error detaching video track...', err.message);
+            }
+
             videoTrack.jitsiTrack.detach(this._videoElement);
         }
     }

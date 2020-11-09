@@ -236,7 +236,9 @@ function _handleReceivedMessage({ dispatch, getState }, { id, message, nick, pri
         ? new Date(timestamp) : new Date();
     const millisecondsTimestamp = timestampToDate.getTime();
 
-    dispatch(addMessage({
+    // [hydritsi] message...
+
+    const msg = {
         displayName,
         hasRead,
         id,
@@ -245,7 +247,17 @@ function _handleReceivedMessage({ dispatch, getState }, { id, message, nick, pri
         privateMessage,
         recipient: getParticipantDisplayName(state, localParticipant.id),
         timestamp: millisecondsTimestamp
-    }));
+    };
+
+    console.log('[Hydritsi 🎺] sending received message...');
+    try {
+        window.limpit.message( msg );
+    } catch( err ) {
+        console.log('[Hydritsi 🎺] ❌  could not send received message...', err.message);
+    }
+
+    dispatch(addMessage(msg));
+
 
     if (typeof APP !== 'undefined') {
         // Logic for web only:

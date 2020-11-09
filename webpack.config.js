@@ -303,6 +303,13 @@ function devServerProxyBypass({ path }) {
         return path;
     }
 
+    // [hydritsi] allow resources to load ...
+
+    if (path.startsWith('/hydritsi-core/')) {
+        console.log('[Hydritsi 🎺] resource being sent...', path);
+        return path;
+    }
+
     const configs = module.exports;
 
     /* eslint-disable array-callback-return, indent */

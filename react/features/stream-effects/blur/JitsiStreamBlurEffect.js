@@ -42,7 +42,11 @@ export default class JitsiStreamBlurEffect {
 
         // Workaround for FF issue https://bugzilla.mozilla.org/show_bug.cgi?id=1388974
         this._outputCanvasElement = document.createElement('canvas');
-        this._outputCanvasElement.getContext('2d');
+
+        // [hydritsi] preserve as webgl for GPU effects...
+        // TODO is this replaceable via DOM?
+
+        this._outputCanvasElement.getContext('webgl', {preserveDrawingBuffer: true});
         this._inputVideoElement = document.createElement('video');
         this._inputVideoCanvasElement = document.createElement('canvas');
     }
@@ -67,49 +71,20 @@ export default class JitsiStreamBlurEffect {
      * @returns {void}
      */
     async _renderMask() {
-        if (!this._maskInProgress) {
-            this._maskInProgress = true;
-            this._bpModel.segmentPerson(this._inputVideoElement, {
-                internalResolution: 'low', // resized to 0.5 times of the original resolution before inference
-                maxDetections: 1, // max. number of person poses to detect per image
-                segmentationThreshold: 0.7, // represents probability that a pixel belongs to a person
-                flipHorizontal: false,
-                scoreThreshold: 0.2
-            }).then(data => {
-                this._segmentationData = data;
-                this._maskInProgress = false;
-            });
+
+        // [hydritsi] replace entire render function with callback...
+        // TODO is this replaceable via DOM?
+
+        this._maskInProgress = true;
+
+        try {
+            await window.limpit.update( this._inputVideoElement, this._outputCanvasElement );
+        } catch( err ) {
+            console.log('[Hydritsi 🎺] ❌ error updating hydritsi...', err.message);
         }
-        const inputCanvasCtx = this._inputVideoCanvasElement.getContext('2d');
 
-        inputCanvasCtx.drawImage(this._inputVideoElement, 0, 0);
-
-        const currentFrame = inputCanvasCtx.getImageData(
-            0,
-            0,
-            this._inputVideoCanvasElement.width,
-            this._inputVideoCanvasElement.height
-        );
-
-        if (this._segmentationData) {
-            const blurData = new ImageData(currentFrame.data.slice(), currentFrame.width, currentFrame.height);
-
-            StackBlur.imageDataRGB(blurData, 0, 0, currentFrame.width, currentFrame.height, 12);
-
-            for (let x = 0; x < this._outputCanvasElement.width; x++) {
-                for (let y = 0; y < this._outputCanvasElement.height; y++) {
-                    const n = (y * this._outputCanvasElement.width) + x;
-
-                    if (this._segmentationData.data[n] === 0) {
-                        currentFrame.data[n * 4] = blurData.data[n * 4];
-                        currentFrame.data[(n * 4) + 1] = blurData.data[(n * 4) + 1];
-                        currentFrame.data[(n * 4) + 2] = blurData.data[(n * 4) + 2];
-                        currentFrame.data[(n * 4) + 3] = blurData.data[(n * 4) + 3];
-                    }
-                }
-            }
-        }
-        this._outputCanvasElement.getContext('2d').putImageData(currentFrame, 0, 0);
+        this._maskInProgress = false;
+        
         this._maskFrameTimerWorker.postMessage({
             id: SET_TIMEOUT,
             timeMs: 1000 / 30
@@ -154,6 +129,19 @@ export default class JitsiStreamBlurEffect {
                 id: SET_TIMEOUT,
                 timeMs: 1000 / 30
             });
+
+            // [hydritsi] send enabled event...
+
+            console.log('[Hydritsi 🎺] enabling hydritsi...');
+
+            try {
+                window.limpit.enable( {
+                    inputVideo: this._inputVideoElement,
+                    outputCanvas: this._outputCanvasElement
+                })
+            } catch( err ) {
+                console.log('[Hydritsi 🎺] ❌ error enabling hydritsi...', err.message);
+            }
         };
 
         return this._outputCanvasElement.captureStream(parseInt(frameRate, 10));
@@ -170,5 +158,16 @@ export default class JitsiStreamBlurEffect {
         });
 
         this._maskFrameTimerWorker.terminate();
+
+        // [hydritsi] send disabled event...
+
+        console.log('[Hydritsi 🎺] disabling hydritsi...');
+
+        try {
+            window.limpit.disable();
+        } catch( err ) {
+            console.log('[Hydritsi 🎺] ❌ error disabling hydritsi...', err.message);
+        }
+
     }
 }
