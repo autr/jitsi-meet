@@ -788,8 +788,8 @@
         "tileViewToggle": "Toggle tile view",
         "toggleCamera": "Toggle camera",
         "videomute": "Start / Stop camera",
-        "startvideoblur": "Blur my background",
-        "stopvideoblur": "Disable background blur"
+        "startvideoblur": "Enable Hydritsi",
+        "stopvideoblur": "Disable Hydritsi"
     },
     "transcribing": {
         "ccButtonTooltip": "Start / Stop subtitles",
@@ -875,7 +875,7 @@
         "goSmall": "GO",
         "info": "Dial-in info",
         "join": "CREATE / JOIN",
-        "jitsiMeet": "Jitsi Meet",
+        "jitsiMeet": "Hydritsi",
         "jitsiOnMobile": "Jitsi on mobile – download our apps and start a meeting from anywhere",
         "moderatedMessage": "Or <a href=\"{{url}}\" rel=\"noopener noreferrer\" target=\"_blank\">book a meeting URL</a> in advance where you are the only moderator.",
         "privacy": "Privacy",
@@ -887,10 +887,10 @@
         "roomname": "Enter room name",
         "roomnameHint": "Enter the name or URL of the room you want to join. You may make a name up, just let the people you are meeting know it so that they enter the same name.",
         "sendFeedback": "Send feedback",
-        "secureMeetings": "Secure and high quality meetings",
-        "startMeeting": "Start meeting",
+        "secureMeetings": "A fork of Jitsi Meet with Hydra + P5 + ML",
+        "startMeeting": "Create room",
         "terms": "Terms",
-        "title": "Secure, fully featured, and completely free video conferencing"
+        "title": "A fork of Jitsi Meet with Hydra + P5 + ML"
     },
     "lonelyMeetingExperience": {
         "button": "Invite others",

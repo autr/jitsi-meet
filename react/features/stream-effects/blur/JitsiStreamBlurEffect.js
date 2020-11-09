@@ -78,7 +78,7 @@ export default class JitsiStreamBlurEffect {
         this._maskInProgress = true;
 
         try {
-            await window.limpit.update( this._inputVideoElement, this._outputCanvasElement );
+            await window.limpit.update();
         } catch( err ) {
             console.log('[Hydritsi 🎺] ❌ error updating hydritsi...', err.message);
         }

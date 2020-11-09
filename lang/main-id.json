@@ -680,8 +680,8 @@
         "tileViewToggle": "Toggle tile view",
         "toggleCamera": "Toggle camera",
         "videomute": "Start / Stop camera",
-        "startvideoblur": "Blur my background",
-        "stopvideoblur": "Disable background blur"
+        "startvideoblur": "Enable Hydritsi",
+        "stopvideoblur": "Disable Hydritsi"
     },
     "transcribing": {
         "ccButtonTooltip": "Start / Stop subtitles",
