@@ -3,6 +3,8 @@
 import { AtlasKitThemeProvider } from '@atlaskit/theme';
 import React from 'react';
 
+import { VideoBlurButton } from '../../../features/blur';
+
 import { DialogContainer } from '../../base/dialog';
 import { ChromeExtensionBanner } from '../../chrome-extension-banner';
 
@@ -41,6 +43,9 @@ export class App extends AbstractApp {
     _renderDialogContainer() {
         return (
             <AtlasKitThemeProvider mode = 'dark'>
+                <div class="hydritsi-blur-button">
+                    <VideoBlurButton />
+                </div>
                 <DialogContainer />
             </AtlasKitThemeProvider>
         );
