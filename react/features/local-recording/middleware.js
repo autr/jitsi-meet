@@ -58,11 +58,7 @@ MiddlewareRegistry.register(({ getState, dispatch }) => next => action => {
             }, 10000));
         };
 
-        typeof APP === 'object' && typeof APP.keyboardshortcut === 'object'
-            && APP.keyboardshortcut.registerShortcut('L', null, () => {
-                sendAnalytics(createShortcutEvent('local.recording'));
-                dispatch(toggleDialog(LocalRecordingInfoDialog));
-            }, 'keyboardShortcuts.localRecording');
+        typeof APP === 'object' && typeof APP.keyboardshortcut === 'object';
 
         if (localRecording.format) {
             recordingController.switchFormat(localRecording.format);

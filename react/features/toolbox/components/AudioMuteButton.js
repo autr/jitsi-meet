@@ -67,12 +67,7 @@ class AudioMuteButton extends AbstractAudioMuteButton<Props, *> {
      * @returns {void}
      */
     componentDidMount() {
-        typeof APP === 'undefined'
-            || APP.keyboardshortcut.registerShortcut(
-                'M',
-                null,
-                this._onKeyboardShortcut,
-                'keyboardShortcuts.mute');
+        typeof APP === 'undefined';
     }
 
     /**
@@ -82,8 +77,7 @@ class AudioMuteButton extends AbstractAudioMuteButton<Props, *> {
      * @returns {void}
      */
     componentWillUnmount() {
-        typeof APP === 'undefined'
-            || APP.keyboardshortcut.unregisterShortcut('M');
+        typeof APP === 'undefined';
     }
 
     /**

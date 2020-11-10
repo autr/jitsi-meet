@@ -83,12 +83,7 @@ class VideoMuteButton extends AbstractVideoMuteButton<Props, *> {
      * @returns {void}
      */
     componentDidMount() {
-        typeof APP === 'undefined'
-            || APP.keyboardshortcut.registerShortcut(
-                'V',
-                null,
-                this._onKeyboardShortcut,
-                'keyboardShortcuts.videoMute');
+        typeof APP === 'undefined';
     }
 
     /**
@@ -98,8 +93,7 @@ class VideoMuteButton extends AbstractVideoMuteButton<Props, *> {
      * @returns {void}
      */
     componentWillUnmount() {
-        typeof APP === 'undefined'
-            || APP.keyboardshortcut.unregisterShortcut('V');
+        typeof APP === 'undefined';
     }
 
     /**

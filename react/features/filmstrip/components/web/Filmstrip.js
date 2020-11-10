@@ -143,12 +143,12 @@ class Filmstrip extends Component <Props> {
      */
     componentDidMount() {
         if (!this.props._filmstripOnly) {
-            APP.keyboardshortcut.registerShortcut(
-                'F',
-                'filmstripPopover',
-                this._onShortcutToggleFilmstrip,
-                'keyboardShortcuts.toggleFilmstrip'
-            );
+            // APP.keyboardshortcut.registerShortcut(
+            //     'F',
+            //     'filmstripPopover',
+            //     this._onShortcutToggleFilmstrip,
+            //     'keyboardShortcuts.toggleFilmstrip'
+            // );
         }
     }
 
@@ -158,7 +158,7 @@ class Filmstrip extends Component <Props> {
      * @inheritdoc
      */
     componentWillUnmount() {
-        APP.keyboardshortcut.unregisterShortcut('F');
+        // APP.keyboardshortcut.unregisterShortcut('F');
     }
 
     /**
