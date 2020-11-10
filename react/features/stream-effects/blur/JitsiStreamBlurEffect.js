@@ -27,6 +27,8 @@ export default class JitsiStreamBlurEffect {
     isEnabled: Function;
     startEffect: Function;
     stopEffect: Function;
+    _isBusy: boolean;
+
 
     /**
      * Represents a modified video MediaStream track.
@@ -75,20 +77,24 @@ export default class JitsiStreamBlurEffect {
         // [hydritsi] replace entire render function with callback...
         // TODO is this replaceable via DOM?
 
-        this._maskInProgress = true;
+        this._maskInProgress = false;
 
+        this._maskFrameTimerWorker.postMessage({
+            id: SET_TIMEOUT,
+            timeMs: 1000 / 30
+        });
+
+        if (this._isBusy) return;
+
+        this._isBusy = true;
         try {
             await window.limpit.update();
         } catch( err ) {
             console.log('[Hydritsi 🎺] ❌ error updating hydritsi...', err.message);
         }
 
-        this._maskInProgress = false;
+        this._isBusy = false;
         
-        this._maskFrameTimerWorker.postMessage({
-            id: SET_TIMEOUT,
-            timeMs: 1000 / 30
-        });
     }
 
     /**

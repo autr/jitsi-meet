@@ -305,8 +305,8 @@ function devServerProxyBypass({ path }) {
 
     // [hydritsi] allow resources to load ...
 
-    if (path.startsWith('/hydritsi-core/')) {
-        console.log('[Hydritsi 🎺] resource being sent...', path);
+    if (path.startsWith('/hydritsi-core/public/')) {
+        console.log('[Hydritsi 🎺] public resource being sent...', path);
         return path;
     }
 
