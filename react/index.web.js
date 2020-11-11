@@ -46,17 +46,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
         console.log('[Hydritsi 🎺] adding assets...');
-        addStylesheet( '/hydritsi-core/public/global.css' ) 
-        addStylesheet( '/hydritsi-core/public/build/bundle.css' ) 
-        addStylesheet( '/hydritsi-core/public/build/prismjs/themes/prism.css' )
-        addStylesheet( '/hydritsi-core/public/build/prismjs/themes/prism-okaidia.css' ) 
-        addScript( '/hydritsi-core/public/libs/hydra-synth.1.3.2.js' )
-        addScript( '/hydritsi-core/public/libs/clmtrackr/examples/js/libs/utils.js' )
-        addScript( '/hydritsi-core/public/libs/clmtrackr/build/clmtrackr.js' )
-        addScript( '/hydritsi-core/public/libs/clmtrackr/models/model_pca_20_svm.js' )
-        addScript( '/hydritsi-core/public/libs/clmtrackr/examples/js/emotion_classifier.js' )
-        addScript( '/hydritsi-core/public/libs/clmtrackr/examples/js/emotionmodel.js' )
-        addScript( '/hydritsi-core/public/build/bundle.js' )
+        addStylesheet( '/static/hydritsi-core/public/global.css' ) 
+        addStylesheet( '/static/hydritsi-core/public/build/bundle.css' ) 
+        addStylesheet( '/static/hydritsi-core/public/build/prismjs/themes/prism.css' )
+        addStylesheet( '/static/hydritsi-core/public/build/prismjs/themes/prism-okaidia.css' ) 
+        addScript( '/static/hydritsi-core/public/libs/hydra-synth.1.3.2.js' )
+        addScript( '/static/hydritsi-core/public/libs/clmtrackr/examples/js/libs/utils.js' )
+        addScript( '/static/hydritsi-core/public/libs/clmtrackr/build/clmtrackr.js' )
+        addScript( '/static/hydritsi-core/public/libs/clmtrackr/models/model_pca_20_svm.js' )
+        addScript( '/static/hydritsi-core/public/libs/clmtrackr/examples/js/emotion_classifier.js' )
+        addScript( '/static/hydritsi-core/public/libs/clmtrackr/examples/js/emotionmodel.js' )
+        addScript( '/static/hydritsi-core/public/build/bundle.js' )
     } catch( err ) {
         console.error('[Hydritsi 🎺] ❌ ', err.message );
         throw err;
