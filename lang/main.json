@@ -887,10 +887,10 @@
         "roomname": "Enter room name",
         "roomnameHint": "Enter the name or URL of the room you want to join. You may make a name up, just let the people you are meeting know it so that they enter the same name.",
         "sendFeedback": "Send feedback",
-        "secureMeetings": "A fork of Jitsi Meet with Hydra + P5 + ML",
+        "secureMeetings": "Live-coding video chat with Jitsi Meet + Hydra Synth + P5.js + TensorFlow",
         "startMeeting": "Create room",
         "terms": "Terms",
-        "title": "A fork of Jitsi Meet with Hydra + P5 + ML"
+        "title": "Live-coding video chat with Jitsi Meet + Hydra Synth + P5.js + TensorFlow"
     },
     "lonelyMeetingExperience": {
         "button": "Invite others",
@@ -902,7 +902,7 @@
     "lobby": {
         "knockingParticipantList": "Knocking participant list",
         "allow": "Allow",
-        "backToKnockModeButton": "No password, ask to join instead",
+        "backToKnockModeButton": "No password + ask to join instead",
         "dialogTitle": "Lobby mode",
         "disableDialogContent": "Lobby mode is currently enabled. This feature ensures that unwanted participants can't join your meeting. Do you want to disable it?",
         "disableDialogSubmit": "Disable",

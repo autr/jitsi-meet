@@ -43,7 +43,7 @@ export class App extends AbstractApp {
     _renderDialogContainer() {
         return (
             <AtlasKitThemeProvider mode = 'dark'>
-                <div class="hydritsi-blur-button">
+                <div className="hydritsi-blur-button">
                     <VideoBlurButton />
                 </div>
                 <DialogContainer />
