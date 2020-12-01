@@ -25,42 +25,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // [hydritsi] adding scripts to head...
 
-    function addScript( path ) {
-        let script = document.createElement('script');
-        script.type = 'application/javascript';
-        script.src = path + '?v=' + Math.random();
-        script.defer = true;
-        document.getElementsByTagName('head')[0].appendChild(script);
-    }
+    // function addScript( path ) {
+    //     let script = document.createElement('script');
+    //     script.type = 'application/javascript';
+    //     script.src = path + '?v=' + Math.random();
+    //     script.defer = true;
+    //     document.getElementsByTagName('head')[0].appendChild(script);
+    // }
 
-    function addStylesheet( path ) {
-        let link = document.createElement('link');
-        link.type = 'text/css';
-        link.rel = 'stylesheet';
+    // function addStylesheet( path ) {
+    //     let link = document.createElement('link');
+    //     link.type = 'text/css';
+    //     link.rel = 'stylesheet';
         
-        // must be set after appending to trigger
+    //     // must be set after appending to trigger
 
-        document.getElementsByTagName('head')[0].appendChild(link);
-        link.href = path + '?v=' + Math.random(); 
-    }
+    //     document.getElementsByTagName('head')[0].appendChild(link);
+    //     link.href = path + '?v=' + Math.random(); 
+    // }
 
-    try {
-        console.log('[Hydritsi 🎺] adding assets...');
-        addStylesheet( '/static/hydritsi-core/public/global.css' ) 
-        addStylesheet( '/static/hydritsi-core/public/build/bundle.css' ) 
-        addStylesheet( '/static/hydritsi-core/public/build/prismjs/themes/prism.css' )
-        addStylesheet( '/static/hydritsi-core/public/build/prismjs/themes/prism-okaidia.css' ) 
-        addScript( '/static/hydritsi-core/public/libs/hydra-synth.1.3.2.js' )
-        addScript( '/static/hydritsi-core/public/libs/clmtrackr/examples/js/libs/utils.js' )
-        addScript( '/static/hydritsi-core/public/libs/clmtrackr/build/clmtrackr.js' )
-        addScript( '/static/hydritsi-core/public/libs/clmtrackr/models/model_pca_20_svm.js' )
-        addScript( '/static/hydritsi-core/public/libs/clmtrackr/examples/js/emotion_classifier.js' )
-        addScript( '/static/hydritsi-core/public/libs/clmtrackr/examples/js/emotionmodel.js' )
-        addScript( '/static/hydritsi-core/public/build/bundle.js' )
-    } catch( err ) {
-        console.error('[Hydritsi 🎺] ❌ ', err.message );
-        throw err;
-    }
+    // try {
+    //     console.log('[Hydritsi 🎺] adding assets...');
+    //     addStylesheet( '/static/hydritsi-core/public/global.css' ) 
+    //     addStylesheet( '/static/hydritsi-core/public/build/bundle.css' ) 
+    //     addStylesheet( '/static/hydritsi-core/public/build/prismjs/themes/prism.css' )
+    //     addStylesheet( '/static/hydritsi-core/public/build/prismjs/themes/prism-okaidia.css' ) 
+    //     addScript( '/static/hydritsi-core/public/libs/hydra-synth.1.3.2.js' )
+    //     addScript( '/static/hydritsi-core/public/libs/clmtrackr/examples/js/libs/utils.js' )
+    //     addScript( '/static/hydritsi-core/public/libs/clmtrackr/build/clmtrackr.js' )
+    //     addScript( '/static/hydritsi-core/public/libs/clmtrackr/models/model_pca_20_svm.js' )
+    //     addScript( '/static/hydritsi-core/public/libs/clmtrackr/examples/js/emotion_classifier.js' )
+    //     addScript( '/static/hydritsi-core/public/libs/clmtrackr/examples/js/emotionmodel.js' )
+    //     addScript( '/static/hydritsi-core/public/build/bundle.js' )
+    // } catch( err ) {
+    //     console.error('[Hydritsi 🎺] ❌ ', err.message );
+    //     throw err;
+    // }
 
 });
 
